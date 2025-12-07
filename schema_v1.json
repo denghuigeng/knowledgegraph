@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0",
+  "name": "medical_imaging_literature_kg",
+  "description": "基于TMI(IEEE Transactions on Medical Imaging)期刊的医学影像文献知识图谱Schema定义",
+  "last_updated": "2024-12-03",
+  
+  "entities": {
+    "Paper": {
+      "description": "单篇医学影像文献",
+      "key_field": "paper_id",
+      "id_strategy": "use_row_index",
+      "attributes": {
+        "paper_id": {
+          "type": "string",
+          "required": true,
+          "description": "论文唯一标识符，格式：paper_{row_index}",
+          "example": "paper_1"
+        },
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "论文标题",
+          "source_field": "Title"
+        },
+        "doi": {
+          "type": "string",
+          "required": false,
+          "description": "数字对象标识符",
+          "source_field": "DOI"
+        },
+        "year": {
+          "type": "integer",
+          "required": false,
+          "description": "发表年份",
+          "source_field": "Publication Year"
+        },
+        "category": {
+          "type": "string",
+          "required": true,
+          "description": "人工标注的研究类别（一级类别-二级类别）",
+          "source_field": "category",
+          "example": "图像分析-脑网络/脑功能"
+        },
+        "authors": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "作者列表",
+          "source_field": "Authors",
+          "extraction_rule": "按 ';' 分割"
+        },
+        "tasks": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "任务列表，必须来自task词表",
+          "vocabulary": "task"
+        },
+        "imaging_modalities": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "成像模态列表，必须来自modality词表",
+          "vocabulary": "modality"
+        },
+        "anatomical_structures": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "解剖结构列表，必须来自structure词表",
+          "vocabulary": "structure"
+        },
+        "diseases": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "疾病列表（当前为空数组）"
+        },
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "方法名称"
+              },
+              "type": {
+                "type": "string",
+                "required": true,
+                "description": "方法类型，必须来自method_type词表",
+                "vocabulary": "method_type"
+              }
+            }
+          },
+          "required": true,
+          "description": "方法列表"
+        },
+        "datasets": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "数据集列表"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "指标名称"
+              },
+              "value": {
+                "type": ["number", "null"],
+                "required": false,
+                "description": "指标数值"
+              },
+              "note": {
+                "type": "string",
+                "required": false,
+                "description": "指标说明"
+              }
+            }
+          },
+          "required": true,
+          "description": "评价指标列表"
+        },
+        "innovations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "required": true,
+                "description": "创新点描述"
+              },
+              "type": {
+                "type": "string",
+                "required": true,
+                "description": "创新类型：方法/理论/应用/系统/数据集/其他"
+              }
+            }
+          },
+          "required": true,
+          "description": "创新点列表（1-3条）"
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "required": true,
+                "description": "关系类型"
+              },
+              "from": {
+                "type": "string",
+                "required": true,
+                "description": "起始实体"
+              },
+              "to": {
+                "type": "string",
+                "required": true,
+                "description": "目标实体"
+              },
+              "value": {
+                "type": ["number", "null"],
+                "required": false,
+                "description": "关系数值（如指标值）"
+              },
+              "note": {
+                "type": "string",
+                "required": false,
+                "description": "关系说明"
+              }
+            }
+          },
+          "required": true,
+          "description": "实体关系列表"
+        }
+      }
+    }
+  },
+  
+  "relations": {
+    "ADDRESSES_TASK": {
+      "description": "论文研究的具体任务",
+      "from": "Paper",
+      "to": "Task",
+      "properties": {}
+    },
+    "USES_MODALITY": {
+      "description": "论文使用的成像模态",
+      "from": "Paper",
+      "to": "ImagingModality",
+      "properties": {}
+    },
+    "FOCUSES_ON_STRUCTURE": {
+      "description": "论文关注的器官/解剖部位",
+      "from": "Paper",
+      "to": "AnatomicalStructure",
+      "properties": {}
+    },
+    "PROPOSES_METHOD": {
+      "description": "论文提出的新方法/模型",
+      "from": "Paper",
+      "to": "Method",
+      "properties": {}
+    },
+    "USES_DATASET": {
+      "description": "论文使用或评估的数据集/挑战",
+      "from": "Paper",
+      "to": "Dataset",
+      "properties": {}
+    },
+    "REPORTS_METRIC": {
+      "description": "论文报告的评价指标",
+      "from": "Paper",
+      "to": "Metric",
+      "properties": {
+        "value": {
+          "type": "number",
+          "required": false
+        },
+        "note": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "HAS_INNOVATION": {
+      "description": "论文的创新点",
+      "from": "Paper",
+      "to": "Innovation",
+      "properties": {}
+    },
+    "DESIGNED_FOR_TASK": {
+      "description": "方法设计用于的任务",
+      "from": "Method",
+      "to": "Task",
+      "properties": {}
+    },
+    "APPLIED_TO_MODALITY": {
+      "description": "方法适用的成像模态",
+      "from": "Method",
+      "to": "ImagingModality",
+      "properties": {}
+    },
+    "APPLIED_TO_STRUCTURE": {
+      "description": "方法应用的解剖结构",
+      "from": "Method",
+      "to": "AnatomicalStructure",
+      "properties": {}
+    },
+    "EVALUATED_ON": {
+      "description": "方法在哪些数据集/挑战上评估",
+      "from": "Method",
+      "to": "Dataset",
+      "properties": {}
+    },
+    "ACHIEVES_METRIC": {
+      "description": "方法在某指标上的表现",
+      "from": "Method",
+      "to": "Metric",
+      "properties": {
+        "value": {
+          "type": "number",
+          "required": false
+        },
+        "note": {
+          "type": "string",
+          "required": false
+        }
+      }
+    }
+  },
+  
+  "naming_rules": {
+    "paper_id": {
+      "format": "paper_{row_index}",
+      "example": "paper_1",
+      "description": "使用行号生成，从1开始"
+    },
+    "entity_normalization": {
+      "rule": "所有实体名称应统一规范化，去除多余空格，统一大小写规则",
+      "task": "使用简体中文",
+      "modality": "保留英文原文，如 MRI(磁共振)",
+      "structure": "使用简体中文",
+      "method_name": "保留英文原文或中文描述",
+      "dataset_name": "保留英文原文"
+    }
+  },
+  
+  "validation_rules": {
+    "vocabulary_constraint": {
+      "description": "以下字段必须来自对应词表",
+      "tasks": "必须来自 vocabulary.json 的 task 词表",
+      "imaging_modalities": "必须来自 vocabulary.json 的 modality 词表",
+      "anatomical_structures": "必须来自 vocabulary.json 的 structure 词表",
+      "methods[].type": "必须来自 vocabulary.json 的 method_type 词表"
+    },
+    "required_fields": {
+      "Paper": ["paper_id", "title", "category", "authors", "tasks", "imaging_modalities", "anatomical_structures", "methods", "datasets", "metrics", "innovations", "relations"]
+    },
+    "array_defaults": {
+      "description": "如果某类信息不存在，应返回空数组 []，不要编造",
+      "fields": ["tasks", "imaging_modalities", "anatomical_structures", "diseases", "methods", "datasets", "metrics", "innovations", "relations"]
+    }
+  }
+}
+

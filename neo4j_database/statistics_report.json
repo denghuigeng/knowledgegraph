@@ -1,0 +1,78 @@
+{
+  "node_counts": {
+    "Paper": 1960,
+    "Task": 12,
+    "ImagingModality": 88,
+    "AnatomicalStructure": 236,
+    "Method": 3689,
+    "Dataset": 1575,
+    "Metric": 1025,
+    "Innovation": 4919
+  },
+  "relation_stats": {
+    "total": 29059,
+    "by_type": {
+      "ADDRESSES_TASK": 2032,
+      "USES_MODALITY": 2582,
+      "PROPOSES_METHOD": 3782,
+      "REPORTS_METRIC": 1986,
+      "HAS_INNOVATION": 4919,
+      "DESIGNED_FOR_TASK": 2374,
+      "APPLIED_TO_MODALITY": 2125,
+      "ACHIEVES_METRIC": 1567,
+      "FOCUSES_ON_STRUCTURE": 2822,
+      "USES_DATASET": 1907,
+      "EVALUATED_ON": 1847,
+      "EVALUATES_METRIC": 181,
+      "APPLIED_TO_STRUCTURE": 882,
+      "EVALUATES_ON": 27,
+      "APPLIED_TO_MODAL,ITY": 5,
+      "APPLIED_TO_MODAL,ity": 1,
+      "EVAL,uated_ON": 1,
+      "COMBINES_WITH": 2,
+      "APPLIED_TO_METHOD": 2,
+      "EVALARED_ON": 1,
+      "APPLIED_TO_TASK": 2,
+      "APPLIED_TO_MODALity": 9,
+      "USES_MODALity": 3
+    }
+  },
+  "paper_stats": {
+    "total_papers": 1960,
+    "year_range": {
+      "min": 2019,
+      "max": 2024
+    },
+    "year_distribution": {
+      "2024": 352,
+      "2023": 308,
+      "2022": 321,
+      "2021": 327,
+      "2020": 390,
+      "2019": 262
+    },
+    "top_categories": {
+      "图像分析-分割": 402,
+      "图像分析-检测与分类": 328,
+      "图像重建-MRI": 244,
+      "图像重建-光学": 152,
+      "图像分析-大模型/多模态": 151,
+      "图像重建-CT": 132,
+      "图像分析-定位/回归": 103,
+      "图像重建-超声": 96,
+      "图像重建-PET/SPECT": 82,
+      "图像分析-配准": 81
+    }
+  },
+  "connectivity_stats": {
+    "total_nodes_with_relations": 13485,
+    "max_degree": 2243,
+    "min_degree": 1,
+    "avg_degree": 4.309825732295143,
+    "median_degree": 2
+  },
+  "structure_validation": {
+    "issues": [],
+    "total_issues": 0
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "duplicates": {},
+  "orphans": {
+    "Paper": {
+      "total": 1960,
+      "orphan": 10,
+      "connected": 1950
+    },
+    "Task": {
+      "total": 12,
+      "orphan": 0,
+      "connected": 12
+    },
+    "ImagingModality": {
+      "total": 88,
+      "orphan": 1,
+      "connected": 87
+    },
+    "AnatomicalStructure": {
+      "total": 236,
+      "orphan": 0,
+      "connected": 236
+    },
+    "Method": {
+      "total": 3689,
+      "orphan": 2,
+      "connected": 3687
+    },
+    "Dataset": {
+      "total": 1575,
+      "orphan": 6,
+      "connected": 1569
+    },
+    "Metric": {
+      "total": 1025,
+      "orphan": 0,
+      "connected": 1025
+    },
+    "Innovation": {
+      "total": 4919,
+      "orphan": 0,
+      "connected": 4919
+    }
+  },
+  "relations": {
+    "total_relations": 29059,
+    "relation_types": {
+      "ADDRESSES_TASK": 2032,
+      "USES_MODALITY": 2582,
+      "PROPOSES_METHOD": 3782,
+      "REPORTS_METRIC": 1986,
+      "HAS_INNOVATION": 4919,
+      "DESIGNED_FOR_TASK": 2374,
+      "APPLIED_TO_MODALITY": 2125,
+      "ACHIEVES_METRIC": 1567,
+      "FOCUSES_ON_STRUCTURE": 2822,
+      "USES_DATASET": 1907,
+      "EVALUATED_ON": 1847,
+      "EVALUATES_METRIC": 181,
+      "APPLIED_TO_STRUCTURE": 882,
+      "EVALUATES_ON": 27,
+      "APPLIED_TO_MODAL,ITY": 5,
+      "APPLIED_TO_MODAL,ity": 1,
+      "EVAL,uated_ON": 1,
+      "COMBINES_WITH": 2,
+      "APPLIED_TO_METHOD": 2,
+      "EVALARED_ON": 1,
+      "APPLIED_TO_TASK": 2,
+      "APPLIED_TO_MODALity": 9,
+      "USES_MODALity": 3
+    },
+    "invalid_relations": 0,
+    "invalid_details": []
+  },
+  "embeddings": {
+    "Paper": {
+      "total": 1960,
+      "with_embedding": 1960,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "Task": {
+      "total": 12,
+      "with_embedding": 12,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "ImagingModality": {
+      "total": 88,
+      "with_embedding": 88,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "AnatomicalStructure": {
+      "total": 236,
+      "with_embedding": 236,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "Method": {
+      "total": 3689,
+      "with_embedding": 3689,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "Dataset": {
+      "total": 1575,
+      "with_embedding": 1575,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "Metric": {
+      "total": 1025,
+      "with_embedding": 1025,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    },
+    "Innovation": {
+      "total": 4919,
+      "with_embedding": 4919,
+      "empty_embedding": 0,
+      "coverage": 100.0
+    }
+  }
+}
